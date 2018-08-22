@@ -1,2 +1,5 @@
 Style/ClassVars:
   Enabled: false
+
+Style/RegexpLiteral:
+  Enabled: false

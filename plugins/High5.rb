@@ -9,10 +9,19 @@ class High5 < Plugin
     'nerp'
   end
 
-  def test
-    resp = response('test', 'test', "#{@@botname}: o/")
+  def _comp_resp(mesg, comp)
+    resp = response('test', 'test', mesg)
     resp = resp.chomp
-    return true if resp == '\o'
+    return true if comp == resp
+    false
+  end
+
+  def test
+    a = _comp_resp("#{@@botname}: o/", '\\o')
+    b = _comp_resp("#{@@botname}: \\o", 'o/')
+    abort("improper response for 'o/'") unless a
+    abort("improper response for '\\o'") unless b
+    return true if a && b
     false
   end
 end

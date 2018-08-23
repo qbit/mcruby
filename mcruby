@@ -1,0 +1,45 @@
+#!/usr/bin/env ruby25
+
+require 'cinch'
+require 'pledge'
+
+require './lib/utils.rb'
+
+plugins = {}
+util = Utils.new
+
+Pledge.pledge('rpath wpath cpath inet prot_exec dns')
+
+util.load_plugins(plugins)
+
+bot_name = 'mcchunkie'
+
+bot = Cinch::Bot.new do
+  configure do |c|
+    c.server = 'irc.freenode.org'
+    c.port = 6697
+    c.channels = ['#devious', '#devious-bot-test']
+    c.nick = bot_name
+    c.sasl.username = bot_name
+    c.sasl.password = File.open('secrets/irc_password') { |f| f.readline.chomp }
+    c.ssl.use = true
+    c.ssl.verify = true
+    c.ssl.ca_file = '/etc/ssl/cert.pem'
+  end
+
+  on :message, // do |m|
+    plugins.each do |p|
+      if m.user.nick == 'qbit' && m.message == 'reload'
+        debug('reloading plugins')
+        util.load_plugins(plugins)
+      end
+      begin
+        m.reply p[1].response('', m.user.nick, m.message)
+      rescue StandardError
+        warn $ERROR_INFO
+      end
+    end
+  end
+end
+
+bot.start

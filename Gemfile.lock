@@ -2,6 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.0)
+    cinch (2.3.4)
     jaro_winkler (1.5.1)
     mini_portile2 (2.3.0)
     nokogiri (1.8.4)
@@ -11,6 +12,7 @@ GEM
       ast (~> 2.4.0)
     powerpack (0.1.2)
     rainbow (3.0.0)
+    redis (4.0.2)
     rubocop (0.58.2)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
@@ -26,7 +28,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  cinch (~> 2.3)
   nokogiri (~> 1.8, >= 1.8.4)
+  redis (~> 4.0, >= 4.0.2)
   rubocop (~> 0.58.2)
 
 BUNDLED WITH

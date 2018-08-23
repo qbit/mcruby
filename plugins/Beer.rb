@@ -76,7 +76,8 @@ class Beer < Plugin
       score: b_score,
       style: b_style,
       abv: b_abv,
-      brewery: b_brewery
+      brewery: b_brewery,
+      url: url
     }
   end
 end

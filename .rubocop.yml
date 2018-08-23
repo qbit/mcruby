@@ -3,3 +3,9 @@ Style/ClassVars:
 
 Style/RegexpLiteral:
   Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false

@@ -4,7 +4,7 @@ require 'socket'
 
 require './lib/utils.rb'
 
-Pledge.pledge('rpath inet')
+Pledge.pledge('rpath wpath cpath inet prot_exec dns')
 
 plugins = {}
 util = Utils.new

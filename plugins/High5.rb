@@ -1,4 +1,4 @@
-require('./plugins/plugins.rb')
+require './plugins/plugins.rb'
 
 # High5 when someone high5s us
 class High5 < Plugin

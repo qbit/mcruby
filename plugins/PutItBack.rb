@@ -1,4 +1,4 @@
-require('./plugins/plugins.rb')
+require './plugins/plugins.rb'
 
 # When a table is flipped, we need to put it back so it can be flipped again.
 class PutItBack < Plugin

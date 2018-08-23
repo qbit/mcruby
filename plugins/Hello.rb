@@ -1,4 +1,4 @@
-require('./plugins/plugins.rb')
+require './plugins/plugins.rb'
 
 # Respond to hello
 class Hello < Plugin

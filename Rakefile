@@ -8,5 +8,5 @@ Rake::TestTask.new(:test) do |t|
 end
 
 RuboCop::RakeTask.new(:rubocop) do |t|
-  t.options = ['--no-color', '-S']
+  t.options = ['--no-color', '-S', '-a']
 end

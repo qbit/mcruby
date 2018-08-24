@@ -6,6 +6,12 @@ class Plugin
     true
   end
 
+  def msg_clean(msg, regex, replace)
+    msg.gsub! regex, replace
+    msg.strip
+    msg.lstrip!
+  end
+
   def response(_to, from, msg)
     "'#{from} #{msg}', No!"
   end

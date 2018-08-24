@@ -6,14 +6,13 @@ class High5 < Plugin
     return unless relevant?(msg)
     return '\o' if msg =~ %r{o\/}x
     return 'o/' if msg =~ %r{\\o}x
-    'nerp'
+    nil
   end
 
-  def _comp_resp(_mesg, _comp)
-    # resp = response('test', 'test', mesg)
-    # resp = resp.chomp
-    # return true if comp == resp
-    # false
+  def _comp_resp(mesg, comp)
+    resp = response('test', 'test', mesg)
+    resp = resp.chomp
+    return true if comp == resp
     true
   end
 

@@ -18,7 +18,8 @@ bot = Cinch::Bot.new do
   configure do |c|
     c.server = 'irc.freenode.org'
     c.port = 6697
-    c.channels = ['#devious', '#devious-bot-test']
+    c.channels = ['#devious', '#cobug', '#devious-bot-test',
+                  '#devious-rf-net', '#pueblo-nerds', '#pueblo-makers']
     c.nick = bot_name
     c.sasl.username = bot_name
     c.sasl.password = File.open('secrets/irc_password') { |f| f.readline.chomp }

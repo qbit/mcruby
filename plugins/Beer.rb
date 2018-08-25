@@ -19,7 +19,14 @@ class Beer < Plugin
   end
 
   def beer(beer)
-    beer_page(beer_url(beer))
+    b = beer_page(beer_url(beer))
+    pp(b,
+       'name': 'Beer',
+       'score':  'Score',
+       'style':  'Style',
+       'abv':  'ABV',
+       'brewery':  'Brewery',
+       'url':  'URL')
   end
 
   private

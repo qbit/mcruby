@@ -12,7 +12,7 @@ EOF
   def response(_to, _from, msg)
     time = Time.now
     return @@friday if time.wday == 5 && msg =~ %r{tgif}i
-    return ':(' if time.wday != 5
+    return ':(' if time.wday != 5 && msg =~ %r{tgif}i
   end
 
   def test

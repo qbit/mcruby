@@ -29,13 +29,13 @@ bot = Cinch::Bot.new do
   end
 
   on :message, // do |m|
-    plugins.each do |p|
+    plugins.each do |k, p|
       if m.user.nick == 'qbit' && m.message == 'reload'
         debug('reloading plugins')
         util.load_plugins(plugins)
       end
       begin
-        m.reply p[1].response('', m.user.nick, m.message)
+        m.reply p.response('', m.user.nick, m.message)
       rescue StandardError
         warn $ERROR_INFO
       end

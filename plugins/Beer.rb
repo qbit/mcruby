@@ -66,7 +66,8 @@ class Beer < Plugin
   def beer_url(name)
     page = get_search_page(name.to_s)
     href = profile(page)
-    @@ba_url + '/' + href
+    # href has ^/ on it
+    @@ba_url + href
   end
 
   def beer_page(url)

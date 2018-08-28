@@ -28,13 +28,28 @@ class Weather < Plugin
     true
   end
 
+  def pretty(wth)
+    descrs = []
+    d_c = (wth['main']['temp'] - 273.15).round(2)
+    d_f = (d_c * 1.800 + 32.00).round(2)
+    h = wth['main']['humidity']
+
+    wth['weather'].each do |d|
+      descrs.push d['description']
+    end
+
+    descrs = descrs.join ', '
+    url = "https://openweathermap.org/city/#{wth['id']}"
+    "#{wth['name']}: #{d_f} °F (#{d_c} °C), Humidity: #{h}, #{descrs}, #{url}"
+  end
+
   def weather(from, location)
     url = loc_to_url(location)
     @@redis.set(from + '_weather', location) unless url.nil?
     url.gsub! '%S', CGI.escape(location)
     url.gsub! '%T', @@token
     uri = URI.parse(url)
-    JSON.parse(uri.open.read)
+    pretty JSON.parse(uri.open.read)
   end
 
   private

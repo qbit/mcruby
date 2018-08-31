@@ -24,9 +24,7 @@ class Plugin
   def pp(resp, map)
     msg = []
     resp.each do |key, r|
-      unless map[key].nil?
-        msg.push [ map[key], r ].join(": ")
-      end
+      msg.push [map[key], r].join(': ') unless map[key].nil?
     end
     msg.join(', ')
   end

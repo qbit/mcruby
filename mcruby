@@ -29,7 +29,7 @@ bot = Cinch::Bot.new do
   end
 
   on :message, // do |m|
-    plugins.each do |k, p|
+    plugins.each do |_k, p|
       if m.user.nick == 'qbit' && m.message == 'reload'
         debug('reloading plugins')
         util.load_plugins(plugins)

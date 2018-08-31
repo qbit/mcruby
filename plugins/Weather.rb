@@ -21,10 +21,7 @@ class Weather < Plugin
 
   def test
     w = response('test', 'test', 'weather: 81069')
-    if w['id'] != 420_006_254
-      w_dump = JSON.pretty_generate(w)
-      abort("Invalid weather data: #{w_dump}")
-    end
+    abort("Invalid weather data: #{w}") if w !~ %r{^Pueblo}
     true
   end
 

@@ -13,8 +13,8 @@ class Beer < Plugin
 
   def test
     beer = response('test', 'test', 'beer: modus hoperandi')
-    abort("invalid data for 'modus hoperandi': #{beer[:abv]}") unless
-      beer[:abv] == '6.80%'
+    abort("invalid data for 'modus hoperandi': #{beer}") unless
+      beer.to_s =~ %r{\d\.\d{2}\%}
     true
   end
 
